@@ -1,0 +1,41 @@
+#After importing the library, you read the dataset using function read_csv(). This is how the code looks like till this stage:
+import pandas as pd
+import numpy as np
+import matplotlib as plt
+%matplotlib inline
+
+df = pd.read_csv("/home/kunal/Downloads/Loan_Prediction/train.csv") #Reading the dataset in a dataframe using Pandas
+
+
+#Once you have read the dataset, you can have a look at few top rows by using the function head()
+df.head(10)
+
+
+#Next, you can look at summary of numerical fields by using describe() function
+df.describe()
+
+
+#Lets start by plotting the histogram of ApplicantIncome using the following commands:
+df['ApplicantIncome'].hist(bins=50)
+
+
+#Next, we look at box plots to understand the distributions. Box plot for fare can be plotted by:
+df.boxplot(column='ApplicantIncome')
+# or
+df.boxplot(column='ApplicantIncome', by = 'Education')
+
+
+#Now, Let’s look at the histogram and boxplot of LoanAmount using the following command:
+df['LoanAmount'].hist(bins=50)
+
+
+#Now we will look at the steps required to generate a similar insight using Python. Please refer to this article for getting a hang of the different data manipulation techniques in Pandas.
+temp1 = df['Credit_History'].value_counts(ascending=True)
+temp2 = df.pivot_table(values='Loan_Status',index=['Credit_History'],aggfunc=lambda x: x.map({'Y':1,'N':0}).mean())
+print ('Frequency Table for Credit History:') 
+print (temp1)
+
+print ('\nProbility of getting loan for each Credit History class:')
+print (temp2)
+
+
