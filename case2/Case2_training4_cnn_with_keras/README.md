@@ -1,4 +1,4 @@
-# cnn-with-keras
+# CASE2 Cnn-with-keras. 
 This assignment case is to build Convolutional Neural Network with keras
 
 This case we take images classes, train a model with keras+tensorflow and then predict a new image with our "intelligent" model.
